@@ -1,0 +1,19 @@
+# general
+_unused
+.DS_Store
+.vscode
+.env
+.env.*
+*.log*
+data/
+
+# nodejs-specific
+node_modules/
+
+
+# R-specific
+src/sourcerer-core/.Rproj.user
+src/sourcerer-core/.Rhistory
+src/sourcerer-core/.RData
+src/sourcerer-core/.Ruserdata
+src/sourcerer-core/config.yml
