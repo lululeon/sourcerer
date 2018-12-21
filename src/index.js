@@ -1,8 +1,6 @@
-// var R = require('r-script');
 const path = require('path');
 const spawn = require("child_process").spawn;
 require('dotenv').config();
-
 
 const rscriptPath = path.resolve("src", "sourcerer-core", "wordcloud.R");
 
@@ -22,13 +20,12 @@ const callR = (path) => {
     });
     child.on('exit', () => {
       if(err) return; // debounce - already rejected
-      resolve("done.");
+      resolve("done."); // TODO: check exit code and resolve/reject accordingly
     });
   });
 }
 
 console.log("Invoking R script... at:", rscriptPath);
-// R(rscriptPath).data({}).call()
 callR(rscriptPath)
 .then(result => {
   console.log("finished with result:", result);

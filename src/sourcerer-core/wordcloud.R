@@ -57,11 +57,15 @@ d <- data.frame(word = names(v),freq=v) # for a peek: head(d, 10)
 
 # create wordcloud
 set.seed(1234) #for reproducibility
+
+# open device for printing to png, pdf, etc
+pdf(paste0(config$datadir, "/outputs/canada_act_wordcloud.pdf"))
 wordcloud(words = d$word, freq = d$freq, min.freq = 20,
           max.words=500, random.order=FALSE, rot.per=0.35, 
           colors=brewer.pal(8, "Accent"))
 
-# copy to an image.
-dev.copy(pdf,paste0(config$datadir, "/outputs/canada_act_wordcloud.pdf"))
+# MUST close device!
 dev.off()
+
+# copy to an image.
 
