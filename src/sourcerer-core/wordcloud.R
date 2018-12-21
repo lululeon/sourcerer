@@ -1,5 +1,17 @@
 # wordcloud.R
 
+# handline commandline args... 
+# rem: with TRUE option below, #args[1] is the "--args" switch; skip it.
+args <- commandArgs(TRUE)
+BASEDIR <- (args[2])
+
+cat(paste0("setting working dir from ", 
+           getwd(), 
+           "to : ", 
+           BASEDIR))
+setwd(BASEDIR)
+
+# utility for checking is something is already installed, then loading.
 usePackage <- function(p) {
   if (!is.element(p, installed.packages()[,1])) {
     install.packages(p, dep = TRUE)
@@ -16,7 +28,6 @@ usePackage("RColorBrewer") #color palettes
 
 # load local config
 config <- config::get() #for datadir
-
 text <- readLines(paste0(config$datadir, "/staging/sample.txt"))
 
 # Load the data as a corpus of character vectors
@@ -51,6 +62,6 @@ wordcloud(words = d$word, freq = d$freq, min.freq = 20,
           colors=brewer.pal(8, "Accent"))
 
 # copy to an image.
-dev.copy(png,paste0(config$datadir, "/outputs/canada_act_wordcloud.png"))
+dev.copy(pdf,paste0(config$datadir, "/outputs/canada_act_wordcloud.pdf"))
 dev.off()
 
