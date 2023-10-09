@@ -1,3 +1,3 @@
 # sourcereR
 
-a nodejs-fuelled R text analysis project that mines open source repositories
+a nodejs-fuelled R text analysis project.
